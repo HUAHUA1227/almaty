@@ -997,6 +997,7 @@ function renderFood() {
   const selObj = FOODS.find(f => f.q === selectedFood) || FOODS[0];
   document.getElementById('selFoodName').textContent = selObj.name;
   document.getElementById('selFoodNav').href = gmapUrl(selObj.name + ' Almaty');
+  document.getElementById('mapFrame').src = 'https://maps.google.com/maps?q=' + encodeURIComponent(selObj.q || (selObj.name + ' Almaty')) + '&output=embed&hl=zh-TW';
 }
 
 /* ═══════════════════════════════════════════════
