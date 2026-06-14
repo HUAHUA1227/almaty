@@ -486,9 +486,12 @@ a { text-decoration: none; }
   }
   .day-tabs::-webkit-scrollbar { display: none; }
   .day-tab { flex-shrink: 0; }
-  .timeline-item { grid-template-columns: 52px 20px 1fr; }
-  .transit-row { grid-template-columns: 52px 20px 1fr; }
-  .itin-card-actions { flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .timeline-item { grid-template-columns: 50px 18px 1fr; }
+  .transit-row { grid-template-columns: 50px 18px 1fr; }
+  .timeline-content { padding: 0 0 16px 14px; }
+  .itin-card-top { flex-direction: column; gap: 10px; }
+  .itin-card-actions { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: flex-start; align-self: flex-start; }
+  .itin-name { font-size: 17px; }
 
   /* FOOD SECTION */
   .food-inner { padding: 52px 16px 0; }
@@ -1091,11 +1094,4 @@ renderStay();
   const btn = document.getElementById('navHamburger');
   const nav = document.getElementById('stickyNavLinks');
   if (!btn || !nav) return;
-  btn.addEventListener('click', () => nav.classList.toggle('nav-open'));
-  nav.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => nav.classList.remove('nav-open'))
-  );
-})();
-</script>
-</body>
-</html>
+  btn.addEventListener('click', 
