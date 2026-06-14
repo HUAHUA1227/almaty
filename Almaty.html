@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Almaty '26 · 山與城之間的七日漫遊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #f6f0e4; font-family: 'Manrope','Noto Sans TC',sans-serif; color: #1f3b4d; }
+html { scroll-behavior: smooth; }
+::selection { background: #2f74a4; color: #fbf7ee; }
+a { text-decoration: none; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 680px;
+  background-image: url('cathedral.jpg');
+  background-size: cover;
+  background-position: center 26%;
+}
+.hero-top-grad {
+  position: absolute; top: 0; left: 0; right: 0; height: 170px;
+  background: linear-gradient(to bottom, rgba(18,38,52,0.55), rgba(18,38,52,0));
+  z-index: 2;
+}
+.hero-nav {
+  position: absolute; top: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 34px 56px; z-index: 4;
+}
+.hero-nav .brand {
+  font-family: 'Space Mono', monospace;
+  font-size: 14px; letter-spacing: 0.24em; color: #fbf7ee;
+}
+.hero-nav nav { display: flex; gap: 34px; font-size: 14px; letter-spacing: 0.05em; color: #f1ece1; }
+.hero-nav nav a { color: inherit; }
+.hero-bottom-grad {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 62%;
+  background: linear-gradient(to top, rgba(15,30,42,0.88), rgba(15,30,42,0.12) 70%, rgba(15,30,42,0));
+  z-index: 2;
+}
+.hero-title {
+  position: absolute; left: 56px; bottom: 64px; z-index: 3;
+}
+.hero-eyebrow {
+  font-family: 'Space Mono', monospace; font-size: 12px;
+  letter-spacing: 0.28em; color: #e8c87a; text-transform: uppercase; margin-bottom: 18px;
+}
+.hero-h1 {
+  font-family: 'Cormorant Garamond','Noto Serif TC',serif;
+  font-weight: 500; font-style: italic; font-size: 168px;
+  line-height: 0.8; color: #fbf7ee; margin: 0; letter-spacing: -0.02em;
+}
+.hero-sub {
+  font-family: 'Noto Serif TC', serif; font-weight: 500; font-size: 30px;
+  color: #f1ece1; margin-top: 18px; letter-spacing: 0.05em;
+}
+.hero-meta {
+  position: absolute; right: 56px; bottom: 68px; z-index: 3; text-align: right;
+}
+.hero-meta-label {
+  font-family: 'Space Mono', monospace; font-size: 11px;
+  letter-spacing: 0.16em; color: #bcc7c2; margin-bottom: 6px;
+}
+.hero-meta-val {
+  font-family: 'Cormorant Garamond', serif; font-size: 27px;
+  color: #fbf7ee; margin-bottom: 20px;
+}
+.hero-meta-val:last-child { margin-bottom: 0; }
+
+/* ── STICKY NAV ── */
+.sticky-nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(246,240,228,0.92); backdrop-filter: blur(8px);
+  border-bottom: 1px solid #ddd4c4;
+}
+.sticky-nav-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 24px;
+}
+.sticky-nav .brand {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 26px; color: #1f3b4d;
+}
+.sticky-nav nav { display: flex; gap: 30px; font-size: 13.5px; letter-spacing: 0.04em; color: #5e6b73; }
+.sticky-nav nav a { color: inherit; }
+.sticky-nav nav a:hover { color: #1f3b4d; }
+
+/* ── SECTION SHELL ── */
+.section { max-width: 1180px; margin: 0 auto; padding: 84px 24px 0; }
+.section-eyebrow {
+  font-family: 'Space Mono', monospace; font-size: 12px;
+  letter-spacing: 0.28em; color: #2f74a4; text-transform: uppercase; margin-bottom: 14px;
+}
+.section-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 16px; margin-bottom: 36px;
+}
+.section-h2 {
+  font-family: 'Cormorant Garamond','Noto Serif TC',serif;
+  font-weight: 500; font-size: 64px; line-height: 1; margin: 0; letter-spacing: -0.01em;
+}
+.section-desc { font-size: 14px; line-height: 1.6; color: #7c8a92; max-width: 360px; margin: 0; }
+
+/* ── FLIGHTS ── */
+.flights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.flight-card {
+  background: #fffdf8; border: 1px solid #e7ddca; border-radius: 6px; overflow: hidden;
+}
+.flight-card-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 22px; color: #fbf7ee;
+}
+.flight-card-head.outbound { background: #2f74a4; }
+.flight-card-head.return { background: #1f3b4d; }
+.flight-card-head .direction {
+  font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.16em;
+}
+.flight-card-head .date {
+  font-family: 'Noto Sans TC', sans-serif; font-size: 13px;
+}
+.flight-card-body { padding: 6px 24px 18px; }
+
+.leg {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 0;
+}
+.leg:last-of-type { padding-bottom: 6px; }
+.airport { min-width: 58px; }
+.airport.right { text-align: right; }
+.airport-code {
+  font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #1f3b4d;
+}
+.airport-time {
+  font-family: 'Space Mono', monospace; font-size: 17px; color: #bd8f3c; margin-top: 5px;
+}
+.airport-name { font-size: 11px; color: #9aa4a0; margin-top: 3px; }
+.flight-line {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px;
+}
+.flight-no { font-family: 'Space Mono', monospace; font-size: 11px; color: #5e6b73; }
+.flight-track {
+  width: 100%; display: flex; align-items: center; gap: 6px;
+}
+.dot-open {
+  width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid; flex-shrink: 0;
+}
+.dot-fill {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+}
+.dash { flex: 1; height: 0; border-top: 1.5px dashed #d3c7af; }
+.plane-icon { font-size: 13px; }
+.flight-dur { font-family: 'Space Mono', monospace; font-size: 10px; color: #9aa4a0; }
+.transfer-divider {
+  display: flex; align-items: center; gap: 10px; padding: 2px 0;
+}
+.transfer-divider .line { flex: 1; height: 1px; background: #ece3d0; }
+.transfer-label {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.1em; color: #bd8f3c;
+}
+.outbound .dot-open, .outbound .dot-fill, .outbound .plane-icon { color: #2f74a4; border-color: #2f74a4; background: #2f74a4; }
+.outbound .dot-open { background: transparent; }
+.return .dot-open, .return .dot-fill, .return .plane-icon { color: #1f3b4d; border-color: #1f3b4d; background: #1f3b4d; }
+.return .dot-open { background: transparent; }
+
+/* ── ITINERARY ── */
+.itin-section { max-width: 1180px; margin: 0 auto; padding: 84px 24px 40px; }
+
+.day-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+.day-tab {
+  padding: 12px 18px; border-radius: 3px; cursor: pointer;
+  text-align: center; min-width: 94px; transition: all .15s;
+  border: 1px solid #e7ddca; background: #fffdf8; color: #5e6b73;
+  user-select: none;
+}
+.day-tab.active { background: #2f74a4; color: #fbf7ee; border-color: #2f74a4; }
+.day-tab:hover:not(.active) { border-color: #2f74a4; color: #2f74a4; }
+.day-tab-num { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.12em; opacity: 0.7; }
+.day-tab-date { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; margin-top: 3px; }
+
+.day-header {
+  display: flex; align-items: flex-start; gap: 18px;
+  margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1.5px solid #1f3b4d;
+}
+.day-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 42px; line-height: 1; color: #bd8f3c;
+  flex-shrink: 0;
+}
+.day-title {
+  font-family: 'Cormorant Garamond','Noto Serif TC',serif;
+  font-size: 34px; line-height: 1.2;
+}
+.day-date {
+  font-family: 'Space Mono', monospace; font-size: 12px;
+  letter-spacing: 0.1em; color: #7c8a92; margin-top: 4px;
+}
+.weather-note {
+  font-size: 12.5px; line-height: 1.6; color: #bd8f3c;
+  background: rgba(189,143,60,0.08); border: 1px solid rgba(189,143,60,0.25);
+  border-radius: 4px; padding: 10px 14px; margin-bottom: 24px;
+}
+
+/* timeline */
+.timeline-item {
+  display: grid; grid-template-columns: 62px 22px 1fr; align-items: start;
+}
+.timeline-time {
+  font-family: 'Space Mono', monospace; font-size: 13px;
+  color: #1f3b4d; padding-top: 16px;
+}
+.timeline-rail {
+  position: relative; align-self: stretch;
+  display: flex; justify-content: center;
+}
+.timeline-rail .rail-line {
+  width: 1.5px; background: #ddd4c4; height: 100%;
+}
+.timeline-rail .rail-dot {
+  position: absolute; top: 18px; width: 11px; height: 11px;
+  border-radius: 50%; background: #f6f0e4; border: 2px solid #2f74a4;
+}
+.timeline-content { padding: 0 0 22px 22px; }
+.itin-card {
+  background: #fffdf8; border: 1px solid #e7ddca; border-radius: 5px; padding: 18px 20px;
+}
+.itin-card-top {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 14px;
+}
+.itin-card-left { flex: 1; }
+.itin-card-meta {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 5px;
+}
+.itin-tag {
+  font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em;
+  color: #2f74a4; border: 1px solid #c5d7e2; padding: 2px 8px; border-radius: 2px;
+}
+.itin-name {
+  font-family: 'Noto Serif TC', serif; font-weight: 500; font-size: 20px; color: #1f3b4d;
+}
+.itin-note { font-size: 13.5px; line-height: 1.6; color: #7c8a92; }
+.itin-card-actions { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; align-items: flex-end; }
+.btn-detail {
+  cursor: pointer; font-family: 'Manrope','Noto Sans TC',sans-serif;
+  font-size: 12px; color: #5e6b73; border: 1px solid #ddd4c4;
+  padding: 7px 12px; border-radius: 2px; background: none; white-space: nowrap;
+  transition: all .15s;
+}
+.btn-detail:hover { border-color: #2f74a4; color: #2f74a4; }
+.btn-nav {
+  font-family: 'Manrope','Noto Sans TC',sans-serif; font-size: 12px;
+  color: #fbf7ee; background: #2f74a4; padding: 8px 13px;
+  border-radius: 2px; white-space: nowrap; transition: background .15s;
+}
+.btn-nav:hover { background: #1f5a8a; }
+.btn-yandex {
+  font-family: 'Manrope','Noto Sans TC',sans-serif; font-size: 12px;
+  color: #1f3b4d; background: #e8c87a; padding: 8px 13px;
+  border-radius: 2px; white-space: nowrap; transition: background .15s;
+}
+.btn-yandex:hover { background: #d4b060; }
+
+.transit-row {
+  display: grid; grid-template-columns: 62px 22px 1fr;
+  align-items: stretch; margin-bottom: 0;
+}
+.transit-stub {
+  position: relative; display: flex; justify-content: center;
+}
+.transit-stub::before {
+  content: ''; position: absolute; top: 0; bottom: 0;
+  width: 1.5px; background: #ddd4c4;
+}
+.transit-label {
+  font-family: 'Space Mono', monospace; font-size: 11px;
+  color: #9aaab3; letter-spacing: 0.05em;
+  padding: 5px 0 5px 22px;
+}
+
+.itin-expand {
+  margin-top: 16px; padding-top: 16px; border-top: 1px dashed #e0d6c2;
+  display: none;
+}
+.itin-expand.open { display: block; }
+.expand-row { display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 14px; }
+.expand-label {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.14em; color: #9aa4a0; text-transform: uppercase; margin-bottom: 4px;
+}
+.expand-val { font-size: 14px; color: #1f3b4d; }
+.expand-section-label {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 8px;
+}
+.expand-section-label.gold { color: #bd8f3c; }
+.expand-section-label.blue { color: #2f74a4; }
+.highlight-item, .tip-item {
+  display: flex; gap: 10px; align-items: flex-start; margin-bottom: 6px;
+}
+.highlight-bullet { color: #bd8f3c; font-size: 14px; line-height: 1.5; }
+.tip-bullet { color: #2f74a4; font-size: 13px; line-height: 1.6; }
+.expand-text { font-size: 14px; line-height: 1.55; color: #46535b; }
+
+/* ── FOOD MAP ── */
+.food-section {
+  background: #1f3b4d; color: #f1ece1; padding: 90px 0;
+}
+.food-inner { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.food-eyebrow {
+  font-family: 'Space Mono', monospace; font-size: 12px;
+  letter-spacing: 0.28em; color: #e8c87a; text-transform: uppercase; margin-bottom: 14px;
+}
+.food-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 16px; margin-bottom: 34px;
+}
+.food-h2 {
+  font-family: 'Cormorant Garamond','Noto Serif TC',serif;
+  font-weight: 500; font-size: 64px; line-height: 1; margin: 0; color: #fbf7ee;
+}
+.food-desc { font-size: 14px; line-height: 1.6; color: #aebcc4; max-width: 360px; margin: 0; }
+
+.cat-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 26px; }
+.cat-chip {
+  padding: 8px 18px; border-radius: 999px; cursor: pointer; font-size: 13px;
+  letter-spacing: 0.03em; border: 1px solid #3d5a6e; white-space: nowrap;
+  font-family: 'Manrope','Noto Sans TC',sans-serif;
+  background: transparent; color: #aebcc4; transition: all .15s; user-select: none;
+}
+.cat-chip.active { background: #e8c87a; color: #1f3b4d; border-color: #e8c87a; }
+.cat-chip:hover:not(.active) { border-color: #e8c87a; color: #e8c87a; }
+
+.food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+.food-list {
+  display: flex; flex-direction: column; gap: 14px;
+  max-height: 560px; overflow-y: auto; padding-right: 6px;
+}
+.food-list::-webkit-scrollbar { width: 4px; }
+.food-list::-webkit-scrollbar-track { background: transparent; }
+.food-list::-webkit-scrollbar-thumb { background: #3d5a6e; border-radius: 2px; }
+
+.food-card {
+  padding: 18px 20px; border-radius: 6px; cursor: pointer; transition: all .15s;
+  background: rgba(34,66,85,0.5); border: 1px solid #355063;
+}
+.food-card.selected { background: #264c61; border: 1px solid #e8c87a; }
+.food-card:hover:not(.selected) { border-color: #5d8a9e; }
+.food-card-top {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
+}
+.food-card-info { flex: 1; }
+.food-name-row {
+  display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px;
+}
+.food-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #fbf7ee;
+}
+.food-stars { font-family: 'Space Mono', monospace; font-size: 11px; color: #e8c87a; }
+.food-cat { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: #8fa0a9; margin-bottom: 8px; }
+.food-desc-txt { font-size: 13px; line-height: 1.55; color: #c3cfd6; }
+.food-must { font-size: 12.5px; line-height: 1.5; color: #e8c87a; margin-top: 7px; }
+.btn-nav-gold {
+  font-family: 'Manrope','Noto Sans TC',sans-serif; font-size: 12px;
+  color: #1f3b4d; background: #e8c87a; padding: 7px 12px;
+  border-radius: 2px; white-space: nowrap; flex-shrink: 0; transition: background .15s;
+}
+.btn-nav-gold:hover { background: #d4b060; }
+
+.map-panel {
+  position: sticky; top: 80px; border-radius: 6px; overflow: hidden;
+  border: 1px solid #355063; height: 560px; background: #0f1e2a;
+  display: flex; flex-direction: column;
+}
+.map-panel iframe { border: 0; display: block; flex: 1; width: 100%; }
+.map-panel-footer {
+  padding: 15px 18px; background: #1f3b4d; border-top: 1px solid #355063;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+.map-sel-label {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.12em; color: #8fa0a9; margin-bottom: 4px;
+}
+.map-sel-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #fbf7ee;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
+}
+.btn-gmap {
+  font-family: 'Manrope','Noto Sans TC',sans-serif; font-size: 12.5px;
+  color: #1f3b4d; background: #e8c87a; padding: 10px 16px;
+  border-radius: 3px; white-space: nowrap; flex-shrink: 0; transition: background .15s;
+}
+.btn-gmap:hover { background: #d4b060; }
+
+/* ── STAY ── */
+.stay-section { max-width: 1180px; margin: 0 auto; padding: 90px 24px; }
+.stay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.stay-card {
+  background: #fffdf8; border: 1px solid #e7ddca; border-radius: 6px; overflow: hidden;
+  display: flex;
+}
+.stay-img {
+  width: 150px; flex-shrink: 0; background-color: #cdd6d2;
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.5) 0 12px, rgba(255,255,255,0) 12px 24px);
+  position: relative;
+}
+.stay-img-label {
+  position: absolute; bottom: 10px; left: 10px;
+  font-family: 'Space Mono', monospace; font-size: 9px; color: #6c7a74;
+}
+.stay-body { padding: 20px 22px; flex: 1; }
+.stay-nights {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.12em; color: #bd8f3c; margin-bottom: 6px;
+}
+.stay-name {
+  font-family: 'Cormorant Garamond','Noto Serif TC',serif;
+  font-size: 26px; margin-bottom: 6px;
+}
+.stay-area { font-size: 13px; color: #7c8a92; line-height: 1.6; margin-bottom: 14px; }
+
+/* ── FOOTER ── */
+.footer {
+  background: #1f3b4d; color: #aebcc4;
+  padding: 50px 24px; text-align: center;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 40px; color: #fbf7ee; margin-bottom: 10px;
+}
+.footer-sub {
+  font-family: 'Space Mono', monospace; font-size: 11px;
+  letter-spacing: 0.18em; color: #7d8e97;
+}
+
+/* hidden utility */
+.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero">
+  <div class="hero-top-grad"></div>
+  <div class="hero-nav">
+    <span class="brand">ALMATY '26</span>
+    <nav>
+      <a href="#flights">航班</a>
+      <a href="#itinerary">行程</a>
+      <a href="#food">美食地圖</a>
+      <a href="#stay">住宿</a>
+    </nav>
+  </div>
+  <div class="hero-bottom-grad"></div>
+  <div class="hero-title">
+    <div class="hero-eyebrow">Kazakhstan · 7 Nights · 2026</div>
+    <h1 class="hero-h1">Almaty</h1>
+    <div class="hero-sub">山與城之間的七日漫遊</div>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-meta-label">DATES</div>
+    <div class="hero-meta-val">6.17 — 6.24</div>
+    <div class="hero-meta-label">TRAVELLERS</div>
+    <div class="hero-meta-val">02 人</div>
+  </div>
+</div>
+
+<!-- ===================== STICKY NAV ===================== -->
+<div class="sticky-nav">
+  <div class="sticky-nav-inner">
+    <span class="brand">Almaty</span>
+    <nav>
+      <a href="#flights">航班</a>
+      <a href="#itinerary">行程表</a>
+      <a href="#food">美食地圖</a>
+      <a href="#stay">住宿</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ===================== FLIGHTS ===================== -->
+<div id="flights" class="section">
+  <div class="section-eyebrow">✈ — Flights</div>
+  <div class="section-header">
+    <h2 class="section-h2">航班資訊</h2>
+    <p class="section-desc">中國國航 Air China · 台北 ↔ 北京 ↔ 阿拉木圖,去回程皆於北京中轉。</p>
+  </div>
+  <div class="flights-grid">
+
+    <!-- OUTBOUND -->
+    <div class="flight-card">
+      <div class="flight-card-head outbound">
+        <span class="direction">去程 OUTBOUND</span>
+        <span class="date">2026 / 6 / 17 · 週三</span>
+      </div>
+      <div class="flight-card-body outbound">
+        <div class="leg">
+          <div class="airport">
+            <div class="airport-code">TPE</div>
+            <div class="airport-time">13:00</div>
+            <div class="airport-name">台北 桃園</div>
+          </div>
+          <div class="flight-line">
+            <div class="flight-no">CA186</div>
+            <div class="flight-track">
+              <div class="dot-open"></div>
+              <div class="dash"></div>
+              <span class="plane-icon">✈</span>
+              <div class="dash"></div>
+              <div class="dot-fill"></div>
+            </div>
+            <div class="flight-dur">3h15m</div>
+          </div>
+          <div class="airport right">
+            <div class="airport-code">PEK</div>
+            <div class="airport-time">16:15</div>
+            <div class="airport-name">北京 首都</div>
+          </div>
+        </div>
+        <div class="transfer-divider">
+          <div class="line"></div>
+          <span class="transfer-label">北京轉機 · 1h15m</span>
+          <div class="line"></div>
+        </div>
+        <div class="leg">
+          <div class="airport">
+            <div class="airport-code">PEK</div>
+            <div class="airport-time">17:30</div>
+            <div class="airport-name">北京 首都</div>
+          </div>
+          <div class="flight-line">
+            <div class="flight-no">CA799</div>
+            <div class="flight-track">
+              <div class="dot-open"></div>
+              <div class="dash"></div>
+              <span class="plane-icon">✈</span>
+              <div class="dash"></div>
+              <div class="dot-fill"></div>
+            </div>
+            <div class="flight-dur">6h10m</div>
+          </div>
+          <div class="airport right">
+            <div class="airport-code">ALA</div>
+            <div class="airport-time">20:40</div>
+            <div class="airport-name">阿拉木圖</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RETURN -->
+    <div class="flight-card">
+      <div class="flight-card-head return">
+        <span class="direction">回程 RETURN</span>
+        <span class="date">2026 / 6 / 24 → 25 · 週三夜</span>
+      </div>
+      <div class="flight-card-body return">
+        <div class="leg">
+          <div class="airport">
+            <div class="airport-code">ALA</div>
+            <div class="airport-time">21:50</div>
+            <div class="airport-name">阿拉木圖</div>
+          </div>
+          <div class="flight-line">
+            <div class="flight-no">CA800</div>
+            <div class="flight-track">
+              <div class="dot-open"></div>
+              <div class="dash"></div>
+              <span class="plane-icon">✈</span>
+              <div class="dash"></div>
+              <div class="dot-fill"></div>
+            </div>
+            <div class="flight-dur">4h50m</div>
+          </div>
+          <div class="airport right">
+            <div class="airport-code">PEK</div>
+            <div class="airport-time">05:40<sup style="font-size:9px">+1</sup></div>
+            <div class="airport-name">北京 首都</div>
+          </div>
+        </div>
+        <div class="transfer-divider">
+          <div class="line"></div>
+          <span class="transfer-label">北京轉機 · 8h15m</span>
+          <div class="line"></div>
+        </div>
+        <div class="leg">
+          <div class="airport">
+            <div class="airport-code">PEK</div>
+            <div class="airport-time">13:55</div>
+            <div class="airport-name">北京 首都</div>
+          </div>
+          <div class="flight-line">
+            <div class="flight-no">CA189</div>
+            <div class="flight-track">
+              <div class="dot-open"></div>
+              <div class="dash"></div>
+              <span class="plane-icon">✈</span>
+              <div class="dash"></div>
+              <div class="dot-fill"></div>
+            </div>
+            <div class="flight-dur">3h15m · 6/25</div>
+          </div>
+          <div class="airport right">
+            <div class="airport-code">TPE</div>
+            <div class="airport-time">17:10</div>
+            <div class="airport-name">台北 桃園</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== ITINERARY ===================== -->
+<div id="itinerary" class="itin-section">
+  <div class="section-eyebrow">01 — Itinerary</div>
+  <div class="section-header">
+    <h2 class="section-h2">每日行程表</h2>
+    <p class="section-desc">點任一天查看時間軸。景點可展開門票與注意事項,並一鍵跳 Google Map 導航。</p>
+  </div>
+
+  <div class="day-tabs" id="dayTabs"></div>
+  <div id="dayHeader"></div>
+  <div class="timeline" id="timeline"></div>
+</div>
+
+<!-- ===================== FOOD MAP ===================== -->
+<div id="food" class="food-section">
+  <div class="food-inner">
+    <div class="food-eyebrow">02 — Food Map</div>
+    <div class="food-header">
+      <h2 class="food-h2">美食地圖</h2>
+      <p class="food-desc">點卡片可在右側地圖定位,或點「導航」直接用 Google Map 帶路。想加店就告訴我。</p>
+    </div>
+    <div class="cat-chips" id="catChips"></div>
+    <div class="food-grid">
+      <div class="food-list" id="foodList"></div>
+      <div class="map-panel">
+        <iframe id="mapFrame"
+          src="https://maps.google.com/maps?q=Navat+restaurant+Almaty&output=embed&hl=zh-TW"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-panel-footer">
+          <div style="min-width:0;">
+            <div class="map-sel-label">已選 · SELECTED</div>
+            <div class="map-sel-name" id="selFoodName">Navat</div>
+          </div>
+          <a class="btn-gmap" id="selFoodNav" href="#" target="_blank" rel="noopener">Google 地圖 ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== STAY ===================== -->
+<div id="stay" class="stay-section">
+  <div class="section-eyebrow">03 — Stay</div>
+  <h2 class="section-h2" style="margin:0 0 34px;">住宿資訊</h2>
+  <div class="stay-grid" id="stayGrid"></div>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<div class="footer">
+  <div class="footer-brand">Almaty</div>
+  <div class="footer-sub">2026 · 7 NIGHTS · 隨走隨記,慢慢長大的旅行手帳</div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════
+   DATA
+═══════════════════════════════════════════════ */
+const DAYS = [
+  { n: '01', date: '6 / 17 · 週三', title: '抵達 × 入住 Turksib', items: [
+    { time: '20:40', tag: '交通', name: '抵達 Almaty 國際機場 (ALA)', place: 'Almaty International Airport', note: 'CA799 自北京飛抵。入境後機場櫃台可買 SIM,用 Yandex Go 叫車。' },
+    { time: '21:30', tag: '住宿', name: '入住 Turksib 一房公寓', note: 'улица Беимбета Майлина 32,近機場、車程約 15–20 分。簡單梳洗,養足精神。' },
+    { time: '22:00', tag: '採買', name: '超市採買（若有時間）', url: 'https://maps.app.goo.gl/LKdxpM5Z8XoMxB4y8', yurl: 'https://yandex.com/maps/?text=Ramazan%20Almaty&ll=77.0073288,43.3414357&z=16', note: '附近超市營業至 23:00,可先補水、零食,並備好隔天自駕野餐用品。' },
+  ]},
+  { n: '02', date: '6 / 18 · 週四', title: '自駕啟程 · Issyk 湖 × 黑色峽谷 × Kolsai', items: [
+    { time: '08:00', tag: '用餐', name: '公寓早餐 · 整裝出發', note: '把昨晚超市買的補給帶上車,今天路程長、早點出發。' },
+    { time: '09:00', tag: '交通', name: '計程車前往租車點', url: 'https://maps.app.goo.gl/8fRRt44tFWTmSyuf8', yurl: 'https://yandex.com/maps/?text=Loong%20Century%20Almaty&ll=76.989088,43.3439215&z=16', note: '用 Yandex Go 叫車前往租車公司取車。' },
+    { time: '09:45', tag: '交通', name: '取車 · 開始自駕', url: 'https://maps.app.goo.gl/8fRRt44tFWTmSyuf8', yurl: 'https://yandex.com/maps/?text=Loong%20Century%20Almaty&ll=76.989088,43.3439215&z=16', note: '檢查油量、保險、備胎,設定離線導航,記下沿途加油站位置。' },
+    { time: '12:00', tag: '景點', name: '第一站 · Lake Issyk 伊塞克湖', place: 'Issyk Lake Kazakhstan', note: '阿拉木圖近郊的高山堰塞湖,湖水碧綠。帶野餐墊在湖邊野餐、走走步道、補充體力。' },
+    { time: '14:30', tag: '景點', name: '第二站 · Black Canyon 黑色峽谷', url: 'https://maps.app.goo.gl/YY9XwAccH7JbhMERA', yurl: 'https://yandex.com/maps/?text=Black%20Canyon%20Kazakhstan&ll=78.8998906,43.2507915&z=12', note: '沿途的黑色峽谷地景,停車拍照、走一小段步道。留意天色與回程路況。' },
+    { time: '17:30', tag: '住宿', name: '抵達 Kolsay Lakes Village · Check-in', url: 'https://maps.app.goo.gl/DpvY3a9dnt8Kdn347', yurl: 'https://yandex.com/maps/?text=Kolsay%20Lakes%20Village&ll=78.3260558,42.991131&z=14', note: '今晚換住湖邊的 Kolsay Lakes Village,就在湖畔。放好行李、稍作休息。' },
+    { time: '18:30', tag: '景點', name: '散步至 Lower Kolsai Lake 下科爾賽湖', place: 'Lower Kolsai Lake', note: '從住宿步行即可到湖邊,傍晚湖景最美,輕鬆散步收尾。' },
+  ]},
+  { n: '03', date: '6 / 19 · 週五', title: 'Kaindy 湖 × Charyn 峽谷 · 返城還車', items: [
+    { time: '08:00', tag: '用餐', name: '湖邊早餐 · 整裝出發', note: '在 Kolsay Lakes Village 吃完早餐,收拾行李、開始今天的行程。' },
+    { time: '09:00', tag: '景點', name: 'Kaindy Lake 凱因迪湖', place: 'Kaindy Lake', note: '水下雲杉林的沉沒森林湖,枯木挺立在碧綠湖面。山路顛簸,慢慢開。' },
+    { time: '13:00', tag: '用餐', name: '午餐 · Taj India 印度料理', url: 'https://maps.app.goo.gl/cGkugUYr8i9LfXPp6', yurl: 'https://yandex.com/maps/?text=Taj%20India%20Kazakhstan&ll=78.4056265,43.0668031&z=16', note: '行程途中的印度餐廳,補充體力再前往峽谷。' },
+    { time: '14:30', tag: '景點', name: 'Charyn Canyon · Visitor Center 入園', place: 'Charyn Canyon Visitor Center', note: '在遊客中心購票入園 Charyn Canyon National Park,搭園區接駁車進入峽谷。',
+      info: { ticket: '國家公園入園費 + 接駁車費（現場購票）', open: '日間,夏季注意高溫', highlights: ['Visitor Center 購票入園', '搭園區接駁車進入峽谷', '城堡谷紅岩步道、恰倫河'], tips: ['先在 Visitor Center 購票、搭接駁車', '步道沙石多,穿好走的鞋', '帶足飲水、遮陽帽'] } },
+    { time: '18:00', tag: '交通', name: '開車返回市區', note: '結束後慢慢開回阿拉木圖市區,留意天色與長途路況。' },
+    { time: '20:00', tag: '住宿', name: '入住 Contento (95/1)', place: 'Contento 95/1 Almaty', note: '回到市區住宿放行李,看時間還可以去附近晃晃、吃個宵夜。' },
+    { time: '22:00', tag: '交通', name: '還車 · 搭計程車回住宿', note: '明早來不及還車,今晚先還掉。還完車在租車點用 Yandex Go 叫車回 Contento。' },
+  ]},
+  { n: '04', date: '6 / 20 · 週六', title: 'Assy 高原越野包團 · Day 1', items: [
+    { time: '09:00', tag: '交通', name: '集合 Gathering', note: '包團集合出發。含越野車(最多7人)、嚮導、環境費、晚會、晚餐 pilaf、熱茶與 ASU 礦泉水。',
+      info: { ticket: '包團價含:越野車(7人)、嚮導、環境費、晚會、晚餐、熱茶、礦泉水', open: '兩天一夜 · 高原紮營過夜', highlights: ['Turgen 熊瀑布 1.5km 步道', 'Assy 高原紮營看日落', '夜晚營火晚會 Disco & 遊戲'], tips: ['高原日夜溫差大,務必保暖', '紮營過夜,帶頭燈與個人盥洗用品', '海拔高、慢行補水'] } },
+    { time: '09:30', tag: '交通', name: '出發 Departure', note: '車隊出發前往 Turgen。' },
+    { time: '12:00', tag: '景點', name: 'Turgen 熊瀑布 Bear Waterfall', url: 'https://maps.app.goo.gl/G8pD4QNYUtguM6387', yurl: 'https://yandex.com/maps/?text=Turgen%20Gorge%20Waterfall&ll=77.7620056,43.2526304&z=13', note: '抵達圖爾根熊瀑布,走 1.5km 步道。' },
+    { time: '14:00', tag: '交通', name: '前往 Assy 高原', note: '出發前往 Assy Plateau。' },
+    { time: '16:30', tag: '景點', name: '抵達 Assy 高原 Assy Plateau', place: 'Assy Plateau', note: '抵達遼闊的 Assy 高原。' },
+    { time: '17:00', tag: '住宿', name: '紮營 Camp setup', note: '搭好營地、安頓行李。' },
+    { time: '18:00', tag: '自由', name: '自由活動 · 周邊散步', note: '在高原四處走走、拍照。' },
+    { time: '20:00', tag: '用餐', name: '晚餐 + 日落 · Pilaf', note: '享用 pilaf 抓飯,看高原日落。' },
+    { time: '21:00', tag: '自由', name: '營火晚會 Evening Program', note: 'Disco、遊戲等夜間活動。' },
+  ]},
+  { n: '05', date: '6 / 21 · 週日', title: 'Assy 高原越野包團 · Day 2 · 返城', items: [
+    { time: '09:00', tag: '自由', name: '起床 Wake up', note: '高原早晨,慢慢起床。' },
+    { time: '10:30', tag: '交通', name: '拆營 Camp breakdown', note: '收拾營地。' },
+    { time: '12:00', tag: '交通', name: '出發返回市區', note: '車隊出發回阿拉木圖。' },
+    { time: '15:00', tag: '交通', name: '抵達市區 · 回到 Contento', place: 'Contento 95/1 Almaty', note: '回到包團結束,回到市區住宿放行李、稍作休整。' },
+    { time: '18:00', tag: '用餐', name: '步行 9 分鐘 · Basilic Canteen', place: 'Basilic canteen Almaty', note: '從 Contento 走路約 9 分鐘的食堂,輕鬆吃個晚餐。' },
+    { time: '19:30', tag: '景點', name: 'Auezov Theatre 站搭地鐵 · 賞站體', url: 'https://maps.app.goo.gl/MdgGn7hfYvoTePaE9', yurl: 'https://yandex.com/maps/?text=Auezov%20Theatre%20metro%20Almaty&ll=76.9173217,43.2406072&z=16', note: '到 Auezov Theatre 地鐵站搭地鐵,順道欣賞當地華麗的地鐵站設計。' },
+    { time: '20:00', tag: '景點', name: 'Arbat 步行街 · 小店 & 街頭表演', url: 'https://maps.app.goo.gl/ZcGMLzfUJkJWm78v5', yurl: 'https://yandex.com/maps/?text=Arbat%20Almaty&ll=76.9429197,43.2618204&z=16', note: '搭到 Arbat 步行街,很多小店與街頭表演,假日傍晚氣氛最好。' },
+    { time: '22:00', tag: '住宿', name: '回到 Contento · 逛 MEGA Park', url: 'https://maps.app.goo.gl/JncTzyZiDmjkPwhf7', yurl: 'https://yandex.com/maps/?text=MEGA%20Park%20Almaty&ll=76.9295358,43.2640471&z=15', note: '晚上回到 Contento,有餘裕可再去飯店旁的 MEGA Park 晃晃。' },
+  ]},
+  { n: '06', date: '6 / 22 · 週一', title: '方案 A（晴天首選）· Shymbulak 纜車 × Kok-Tobe 落日',
+    weatherNote: 'Day 6 / 7 看天氣調換順序：放晴日做這個高山方案,陰雨日改做方案 B 的城市散步。', items: [
+    { time: '08:30', tag: '交通', name: '搭 12 號公車前往 Medeu', place: 'Medeu Almaty', note: '從市區搭 12 號公車前往 Medeu 纜車站。' },
+    { time: '09:30', tag: '景點', name: 'Shymbulak 三段纜車登頂', url: 'https://maps.app.goo.gl/i1RrVxbHSdkppaLp6', yurl: 'https://yandex.com/maps/?text=Shymbulak%20cable%20car&ll=77.051639,43.1628867&z=14', note: '從 Medeu 搭乘三段纜車直上山頂,享受天山雪景與山頂風光後下山。',
+      info: { ticket: '纜車來回約 ₸6,000–8,000（依季節）', open: '10:00 – 17:30', highlights: ['三段纜車穿越天山雪景', '頂站觀景台俯瞰群峰', '夏季可同時見綠坡與殘雪'], tips: ['山頂仍涼、約 0–8°C,務必帶外套', '高海拔慢行、補水防高反', '纜車末班時間早,提早下山'] } },
+    { time: '13:30', tag: '用餐', name: '午餐 · Daredzhani', url: 'https://maps.app.goo.gl/RA48oeD2P9LWWkL3A', yurl: 'https://yandex.com/maps/?text=Daredzhani%20Almaty&ll=76.9560785,43.2454347&z=17', note: '下山後到 Daredzhani 吃飯,飯後在附近店家逛逛。' },
+    { time: '18:30', tag: '景點', name: 'Kok-Tobe Hill · 落日飛車', url: 'https://maps.app.goo.gl/ohipHK8h2EoiguJR9', yurl: 'https://yandex.com/maps/?text=Kok-Tobe%20Hill%20Almaty&ll=76.9758408,43.2340538&z=15', note: '傍晚到 Kok-Tobe 玩落日飛車。記得在落日前約 40 分鐘去排隊,才能搭到看最美夕陽的那一趟。',
+      info: { ticket: '纜車來回約 ₸4,000 + 飛車另計', open: '10:00 – 22:00', highlights: ['落日飛車俯瞰城市與群山', '山頂觀景台看城市點燈夜景'], tips: ['落日前 40 分鐘先去排隊', '山頂風大、加件外套'] } },
+  ]},
+  { n: '07', date: '6 / 23 · 週二', title: '方案 B（陰雨備案）· 大教堂 Citywalk × 伴手禮',
+    weatherNote: 'Day 6 / 7 看天氣調換順序：陰雨日做這個城市方案,放晴日改做方案 A 的高山行程。', items: [
+    { time: '10:00', tag: '景點', name: '升天主教座堂周邊 Citywalk', place: 'Ascension Cathedral Almaty', note: '從升天主教座堂（Zenkov 木造大教堂）所在的 Panfilov 公園一帶開始散步。' },
+    { time: '11:30', tag: '景點', name: '綠色大巴札 Green Bazaar', place: 'Green Bazaar Almaty', note: '逛當地最熱鬧的傳統市集,乾果、蜂蜜、香料、熟食。' },
+    { time: '12:30', tag: '景點', name: '中央清真寺 Central Mosque', place: 'Almaty Central Mosque', note: '參觀市區的中央清真寺（留意服裝規範）。' },
+    { time: '13:30', tag: '用餐', name: '午餐 · Shashlychok Na Pastera', url: 'https://maps.app.goo.gl/VqzaAJL7MsvioHzh7', yurl: 'https://yandex.com/maps/?text=Shashlychok%20Na%20Pastera&ll=76.9601917,43.2651828&z=17', note: '吃非常有名的 Shashlychok Na Pastera 串燒,或改吃 Lanzhou Noodle 蘭州拉麵。' },
+    { time: '15:00', tag: '景點', name: 'Central Park 中央公園', place: 'Central Park Almaty', note: '飯後到中央公園散步消化。' },
+    { time: '19:00', tag: '採購', name: 'MEGA Alma-Ata · 採買伴手禮', url: 'https://maps.app.goo.gl/QyAmWisoefSfavfs5', yurl: 'https://yandex.com/maps/?text=MEGA%20Alma-Ata&ll=76.8929335,43.2016282&z=16', note: '晚上到 MEGA Alma-Ata 採買伴手禮:巧克力、蜂蜜、磁鐵、茶。' },
+  ]},
+  { n: '08', date: '6 / 24 · 週三', title: '返程 · 夜班機', items: [
+    { time: '10:00', tag: '住宿', name: '退房 · 行李寄放', note: '公寓退房,行李可寄放或隨身,白天仍可輕鬆活動。' },
+    { time: '11:00', tag: '自由', name: '市區最後漫步 / 咖啡', note: '不安排遠程,留體力給長途夜班機。' },
+    { time: '14:00', tag: '採購', name: '機場前最後補貨', note: '把握最後的伴手禮與點心。' },
+    { time: '18:30', tag: '交通', name: '前往 Almaty 機場 (ALA)', place: 'Almaty International Airport', note: 'CA800 21:50 起飛,建議提早 2.5–3 小時抵達辦理。' },
+    { time: '21:50', tag: '交通', name: '搭機 ALA → 北京 (CA800)', note: '05:40 抵北京,於北京轉 CA189（13:55→17:10）返台北。' },
+  ]},
+];
+
+const FOODS = [
+  { name: 'Navat', cat: '哈薩克', area: '市中心', price: 2, desc: '人氣傳統茶館,氛圍熱鬧。', must: '抓飯 plov、烤肉串、奶茶', q: 'Navat restaurant Almaty' },
+  { name: 'Auyl', cat: '哈薩克', area: '近 Kok-Tobe', price: 3, desc: '草原帳篷風的精緻哈薩克料理。', must: 'beshbarmak、馬肉拼盤', q: 'Auyl restaurant Almaty' },
+  { name: 'Tюбетейка Tubeteika', cat: '哈薩克', area: '多分店', price: 2, desc: '平價連鎖中亞家常菜。', must: 'lagman 拉麵、manty 蒸餃', q: 'Tubeteika restaurant Almaty' },
+  { name: 'Daredzhani', cat: '喬治亞', area: '市中心', price: 2, desc: '道地喬治亞菜,份量足。', must: 'khinkali、khachapuri 起司船', q: 'Daredzhani restaurant Almaty', nav: 'https://maps.app.goo.gl/RA48oeD2P9LWWkL3A' },
+  { name: 'Kishlak', cat: '中亞', area: '市區', price: 2, desc: '烏茲別克風味、用餐有民俗感。', must: '柴火抓飯、烤包子 samsa', q: 'Kishlak restaurant Almaty' },
+  { name: 'Rumi', cat: '中亞', area: 'Dostyk 大道', price: 3, desc: '現代化中東 / 中亞融合餐廳。', must: '烤羊排、開胃冷盤', q: 'Rumi restaurant Almaty' },
+  { name: 'Shashlychok Na Pastera', cat: '中亞', area: '北市區（Day 7）', price: 2, desc: '阿拉木圖聲名響亮的傳統串燒小館,烤肉鮮嫩入味。', must: 'shashlik 串燒、烤蔬菜', q: 'Shashlychok Na Pastera Almaty', nav: 'https://maps.app.goo.gl/VqzaAJL7MsvioHzh7' },
+  { name: 'Shipudim', cat: '中亞', area: '市中心', price: 2, desc: '以色列風格烤串館,口味獨特,串燒多汁鮮嫩。', must: '烤串拼盤、皮塔餅', q: 'Shipudim Almaty', nav: 'https://maps.app.goo.gl/8qUjR3ajj31o5FMp8' },
+  { name: 'Patsatsina Gruzinskaya Kukhnya', cat: '喬治亞', area: '市中心', price: 2, desc: '在地人推薦的喬治亞家常菜館,氛圍溫馨樸實。', must: 'khinkali 湯餃、lobiani 豆沙烤餅', q: 'Patsatsina Gruzinskaya Kukhnya Almaty', nav: 'https://maps.app.goo.gl/SyJ1ZCUXewtpMwgNA' },
+  { name: 'Хосе & Josper', cat: '其他', area: '市中心', price: 3, desc: '西班牙 Josper 炭火窯燒烤餐廳,烤肉焦香多汁,頗受本地食客喜愛。', must: 'Josper 炭烤肉排、烤時蔬', q: 'Хосе Josper Almaty', nav: 'https://maps.app.goo.gl/e1MDHpXFPyvUZHoG9' },
+  { name: 'Taj India', cat: '印度', area: '城郊（Day 3 途中）', price: 2, desc: '行程途中補充體力的印度料理,咖哩香氣十足。', must: '咖哩飯、烤餅 naan', q: 'Taj India Kazakhstan', nav: 'https://maps.app.goo.gl/cGkugUYr8i9LfXPp6' },
+  { name: 'Basilic Canteen', cat: '咖啡甜點', area: '近 Contento（步行 9 分）', price: 1, desc: '平價食堂,從 Contento 步行即達,包團返城後首選。', must: '每日特餐、湯品', q: 'Basilic Canteen Almaty' },
+  { name: 'Coffeedelia', cat: '咖啡甜點', area: '市中心', price: 2, desc: '文青咖啡館,早午餐選擇多。', must: '手沖咖啡、甜點盤', q: 'Coffeedelia Almaty' },
+  { name: 'Bla Bla Bar', cat: '咖啡甜點', area: '市中心', price: 2, desc: '日間咖啡、入夜小酌的熱門點。', must: '招牌甜點、特調', q: 'Bla Bla Bar Almaty' },
+];
+
+const STAYS = [
+  { nights: 'NIGHT 1 · 6/17 · Turksib', name: '1 комнатная квартира（一房公寓）', area: 'улица Беимбета Майлина 32, Turksib 區 · 近機場,深夜抵達後車程僅約 15–20 分。', nav: 'https://www.google.com/maps/search/?api=1&query=43.344717172274,77.008002200329' },
+  { nights: 'NIGHT 2 · 6/18 · 湖區', name: 'Kolsay Lakes Village', area: '科爾賽湖畔的湖邊小村,放完行李即可散步到 Lower Kolsai Lake。', nav: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Kolsay Lakes Village') },
+  { nights: 'NIGHT 3·5–7 · 市區', name: 'Contento (95/1)', area: '市區住宿,自駕返城後入住;亦為 Assy 包團前後的落腳點（6/19、6/21–6/23）。', nav: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Contento 95/1 Almaty') },
+  { nights: 'NIGHT 4 · 6/20 · Assy', name: 'Assy 高原露營（包團）', area: 'Assy 高原越野包團於高原紮營過夜,含晚餐 pilaf 與營火晚會。', nav: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Assy Plateau Kazakhstan') },
+];
+
+/* ═══════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════ */
+let activeDay = '02';
+let expandedItems = {};
+let activeCat = '全部';
+let selectedFood = FOODS[0].q;
+
+/* ═══════════════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════════════ */
+function navUrl(place) {
+  return place ? 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(place + ' Almaty') : null;
+}
+
+function gmapUrl(q) {
+  return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+}
+
+function stars(n) { return '₸'.repeat(n); }
+
+function yandexNavUrl(q) {
+  return 'https://yandex.com/maps/?text=' + encodeURIComponent(q);
+}
+
+const TRANSIT = {
+  '01-1': '🚖 計程車 · 約 20 分',
+  '01-2': '🚶 步行 · 約 5 分',
+  '02-1': '🚖 計程車 · 約 25 分',
+  '02-3': '🚗 開車 · 約 1h 15',
+  '02-4': '🚗 開車 · 約 40 分',
+  '02-5': '🚗 開車 · 約 2h',
+  '02-6': '🚶 步行 · 即達',
+  '03-1': '🚗 開車 · 約 30 分',
+  '03-2': '🚗 開車 · 約 1h 30',
+  '03-3': '🚗 開車 · 約 1h 30',
+  '03-5': '🚗 開車 · 約 2h 30',
+  '04-2': '🚗 開車 · 約 1h 30',
+  '04-4': '🚗 開車 · 約 1h',
+  '05-3': '🚗 開車 · 約 2h 30',
+  '05-4': '🚶 步行 · 約 9 分',
+  '05-5': '🚖 計程車 · 約 20 分',
+  '05-6': '🚇 地鐵 4 站 · 約 12 分',
+  '05-7': '🚖 計程車 · 約 20 分',
+  '06-1': '🚠 纜車 · 約 30 分',
+  '06-2': '🚖 計程車 · 約 50 分',
+  '06-3': '🚖 計程車 · 約 20 分',
+  '07-1': '🚶 步行 · 約 10 分',
+  '07-2': '🚶 步行 · 約 15 分',
+  '07-3': '🚖 計程車 · 約 25 分',
+  '07-4': '🚖 計程車 · 約 15 分',
+  '07-5': '🚖 計程車 · 約 25 分',
+  '08-3': '🚖 計程車 · 約 35 分',
+};
+
+/* ═══════════════════════════════════════════════
+   ITINERARY RENDER
+═══════════════════════════════════════════════ */
+function renderItinerary() {
+  const tabsEl = document.getElementById('dayTabs');
+  const headerEl = document.getElementById('dayHeader');
+  const timelineEl = document.getElementById('timeline');
+
+  // Tabs
+  tabsEl.innerHTML = DAYS.map(d => `
+    <div class="day-tab ${d.n === activeDay ? 'active' : ''}" data-day="${d.n}">
+      <div class="day-tab-num">DAY ${d.n}</div>
+      <div class="day-tab-date">${d.date.split('·')[1] ? d.date.split('·')[1].trim() : d.date}</div>
+    </div>
+  `).join('');
+
+  tabsEl.querySelectorAll('.day-tab').forEach(el => {
+    el.addEventListener('click', () => {
+      activeDay = el.dataset.day;
+      expandedItems = {};
+      renderItinerary();
+    });
+  });
+
+  // Active day header
+  const day = DAYS.find(d => d.n === activeDay) || DAYS[0];
+  headerEl.innerHTML = `
+    ${day.weatherNote ? `<div class="weather-note">⛅ ${day.weatherNote}</div>` : ''}
+    <div class="day-header">
+      <div class="day-num">${day.n}</div>
+      <div>
+        <div class="day-title">${day.title}</div>
+        <div class="day-date">${day.date}</div>
+      </div>
+    </div>
+  `;
+
+  // Timeline
+  timelineEl.innerHTML = day.items.map((it, i) => {
+    const key = day.n + '-' + i;
+    const hasInfo = !!it.info;
+    const expanded = !!expandedItems[key];
+    const nav = it.url || (it.place ? navUrl(it.place) : null);
+    const yandexQ = it.place || (it.name + ' Almaty');
+    const yandex = nav ? (it.yurl || yandexNavUrl(yandexQ)) : null;
+    const transitText = TRANSIT[key];
+    const transitHtml = transitText ? `
+      <div class="transit-row">
+        <div></div>
+        <div class="transit-stub"></div>
+        <div class="transit-label">${transitText}</div>
+      </div>
+    ` : '';
+
+    let expandHtml = '';
+    if (hasInfo && expanded) {
+      const info = it.info;
+      expandHtml = `
+        <div class="itin-expand open">
+          <div class="expand-row">
+            ${info.ticket ? `<div><div class="expand-label">門票</div><div class="expand-val">${info.ticket}</div></div>` : ''}
+            ${info.open ? `<div><div class="expand-label">開放時間</div><div class="expand-val">${info.open}</div></div>` : ''}
+          </div>
+          ${info.highlights && info.highlights.length ? `
+            <div style="margin-bottom:14px;">
+              <div class="expand-section-label gold">亮點 Highlights</div>
+              ${info.highlights.map(h => `<div class="highlight-item"><span class="highlight-bullet">◆</span><span class="expand-text">${h}</span></div>`).join(
