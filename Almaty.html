@@ -166,10 +166,12 @@ a { text-decoration: none; }
   font-family: 'Space Mono', monospace; font-size: 10px;
   letter-spacing: 0.1em; color: #bd8f3c;
 }
-.outbound .dot-open, .outbound .dot-fill, .outbound .plane-icon { color: #2f74a4; border-color: #2f74a4; background: #2f74a4; }
+.outbound .dot-open, .outbound .dot-fill { color: #2f74a4; border-color: #2f74a4; background: #2f74a4; }
 .outbound .dot-open { background: transparent; }
-.return .dot-open, .return .dot-fill, .return .plane-icon { color: #1f3b4d; border-color: #1f3b4d; background: #1f3b4d; }
+.outbound .plane-icon { color: #2f74a4; }
+.return .dot-open, .return .dot-fill { color: #1f3b4d; border-color: #1f3b4d; background: #1f3b4d; }
 .return .dot-open { background: transparent; }
+.return .plane-icon { color: #1f3b4d; }
 
 /* ── ITINERARY ── */
 .itin-section { max-width: 1180px; margin: 0 auto; padding: 84px 24px 40px; }
@@ -1093,5 +1095,4 @@ renderStay();
 (function() {
   const btn = document.getElementById('navHamburger');
   const nav = document.getElementById('stickyNavLinks');
-  if (!btn || !nav) return;
-  btn.addEventListener('click', 
+  if (!btn || !nav) re
