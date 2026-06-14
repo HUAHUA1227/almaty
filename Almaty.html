@@ -894,4 +894,134 @@ function renderItinerary() {
           ${info.highlights && info.highlights.length ? `
             <div style="margin-bottom:14px;">
               <div class="expand-section-label gold">亮點 Highlights</div>
-              ${info.highlights.map(h => `<div class="highlight-item"><span class="highlight-bullet">◆</span><span class="expand-text">${h}</span></div>`).join(
+              ${info.highlights.map(h => `<div class="highlight-item"><span class="highlight-bullet">◆</span><span class="expand-text">${h}</span></div>`).join('')}
+            </div>
+          ` : ''}
+          ${info.tips && info.tips.length ? `
+            <div>
+              <div class="expand-section-label blue">注意事項 Notes</div>
+              ${info.tips.map(t => `<div class="tip-item"><span class="tip-bullet">●</span><span class="expand-text">${t}</span></div>`).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    } else if (hasInfo) {
+      expandHtml = `<div class="itin-expand"></div>`;
+    }
+
+    return transitHtml + `
+      <div class="timeline-item">
+        <div class="timeline-time">${it.time}</div>
+        <div class="timeline-rail">
+          <div class="rail-line"></div>
+          <div class="rail-dot"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="itin-card">
+            <div class="itin-card-top">
+              <div class="itin-card-left">
+                <div class="itin-card-meta">
+                  <span class="itin-tag">${it.tag}</span>
+                  <span class="itin-name">${it.name}</span>
+                </div>
+                ${it.note ? `<div class="itin-note">${it.note}</div>` : ''}
+              </div>
+              <div class="itin-card-actions">
+                ${hasInfo ? `<button class="btn-detail" data-key="${key}">${expanded ? '詳情 –' : '詳情 +'}</button>` : ''}
+                ${nav ? `<a class="btn-nav" href="${nav}" target="_blank" rel="noopener">導航 ↗</a>` : ''}
+                ${yandex ? `<a class="btn-yandex" href="${yandex}" target="_blank" rel="noopener">Yandex ↗</a>` : ''}
+              </div>
+            </div>
+            ${expandHtml}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  timelineEl.querySelectorAll('.btn-detail').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.key;
+      expandedItems[key] = !expandedItems[key];
+      renderItinerary();
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════
+   FOOD MAP RENDER
+═══════════════════════════════════════════════ */
+const CATS = ['全部', '哈薩克', '中亞', '喬治亞', '咖啡甜點'];
+
+function renderFood() {
+  const chipsEl = document.getElementById('catChips');
+  chipsEl.innerHTML = CATS.map(c => `
+    <div class="cat-chip ${c === activeCat ? 'active' : ''}" data-cat="${c}">${c}</div>
+  `).join('');
+  chipsEl.querySelectorAll('.cat-chip').forEach(el => {
+    el.addEventListener('click', () => {
+      activeCat = el.dataset.cat;
+      const visible = activeCat === '全部' ? FOODS : FOODS.filter(f => f.cat === activeCat);
+      if (!visible.find(f => f.q === selectedFood)) {
+        selectedFood = visible[0] ? visible[0].q : FOODS[0].q;
+      }
+      renderFood();
+    });
+  });
+
+  const visible = activeCat === '全部' ? FOODS : FOODS.filter(f => f.cat === activeCat);
+  const listEl = document.getElementById('foodList');
+  listEl.innerHTML = visible.map(f => `
+    <div class="food-card ${selectedFood === f.q ? 'selected' : ''}" data-q="${f.q}">
+      <div class="food-card-top">
+        <div class="food-card-info">
+          <div class="food-name-row">
+            <span class="food-name">${f.name}</span>
+            <span class="food-stars">${stars(f.price)}</span>
+          </div>
+          <div class="food-cat">${f.cat} · ${f.area}</div>
+          <div class="food-desc-txt">${f.desc}</div>
+          <div class="food-must">必點 · ${f.must}</div>
+        </div>
+        <a class="btn-nav-gold" href="${gmapUrl(f.name + ' Almaty')}" target="_blank" rel="noopener" onclick="event.stopPropagation()">導航 ↗</a>
+      </div>
+    </div>
+  `).join('');
+  listEl.querySelectorAll('.food-card').forEach(el => {
+    el.addEventListener('click', () => {
+      selectedFood = el.dataset.q;
+      renderFood();
+    });
+  });
+
+  const selObj = FOODS.find(f => f.q === selectedFood) || FOODS[0];
+  document.getElementById('selFoodName').textContent = selObj.name;
+  document.getElementById('selFoodNav').href = gmapUrl(selObj.name + ' Almaty');
+}
+
+/* ═══════════════════════════════════════════════
+   STAY RENDER
+═══════════════════════════════════════════════ */
+function renderStay() {
+  document.getElementById('stayGrid').innerHTML = STAYS.map(s => `
+    <div class="stay-card">
+      <div class="stay-img"><span class="stay-img-label">飯店照</span></div>
+      <div class="stay-body">
+        <div class="stay-nights">${s.nights}</div>
+        <div class="stay-name">${s.name}</div>
+        <div class="stay-area">${s.area}</div>
+        <a class="btn-nav" href="${s.nav}" target="_blank" rel="noopener">地圖 ↗</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════ */
+renderItinerary();
+renderFood();
+renderStay();
+</script>
+</body>
+</html>
