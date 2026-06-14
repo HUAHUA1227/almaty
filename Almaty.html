@@ -1095,4 +1095,12 @@ renderStay();
 (function() {
   const btn = document.getElementById('navHamburger');
   const nav = document.getElementById('stickyNavLinks');
-  if (!btn || !nav) re
+  if (!btn || !nav) return;
+  btn.addEventListener('click', () => nav.classList.toggle('nav-open'));
+  nav.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => nav.classList.remove('nav-open'))
+  );
+})();
+</script>
+</body>
+</html>
