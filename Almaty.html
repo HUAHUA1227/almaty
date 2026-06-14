@@ -441,6 +441,66 @@ a { text-decoration: none; }
 
 /* hidden utility */
 .hidden { display: none; }
+
+/* ── HAMBURGER (desktop hidden) ── */
+.nav-hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  padding: 2px 6px; font-size: 22px; color: #1f3b4d; line-height: 1;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  /* STICKY NAV */
+  .nav-hamburger { display: block; }
+  .sticky-nav-inner { flex-wrap: wrap; padding: 14px 16px; }
+  .sticky-nav nav {
+    display: none; width: 100%; flex-direction: column;
+    gap: 0; padding-bottom: 10px;
+  }
+  .sticky-nav nav.nav-open { display: flex; }
+  .sticky-nav nav a {
+    padding: 10px 0; border-top: 1px solid #ddd4c4; font-size: 15px;
+  }
+
+  /* HERO */
+  .hero-nav { padding: 20px 20px; }
+  .hero-h1 { font-size: 72px; }
+  .hero-sub { font-size: 18px; margin-top: 10px; }
+  .hero-title { left: 20px; bottom: 36px; }
+  .hero-meta { display: none; }
+
+  /* SECTION */
+  .section { padding: 52px 16px 0; }
+  .section-h2 { font-size: 38px; }
+  .section-header { margin-bottom: 22px; }
+  .section-desc { max-width: 100%; }
+
+  /* FLIGHTS */
+  .flights-grid { grid-template-columns: 1fr; }
+
+  /* ITINERARY */
+  .day-tabs {
+    flex-wrap: nowrap; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+  .day-tabs::-webkit-scrollbar { display: none; }
+  .day-tab { flex-shrink: 0; }
+  .timeline-item { grid-template-columns: 52px 20px 1fr; }
+  .transit-row { grid-template-columns: 52px 20px 1fr; }
+  .itin-card-actions { flex-direction: row; flex-wrap: wrap; align-items: center; }
+
+  /* FOOD SECTION */
+  .food-inner { padding: 52px 16px 0; }
+  .food-h2 { font-size: 38px; }
+  .food-grid { grid-template-columns: 1fr; }
+  .food-list { max-height: none; overflow-y: visible; padding-right: 0; }
+  .map-panel { display: none; }
+
+  /* STAY SECTION */
+  .stay-section { padding: 52px 16px 0; }
+  .stay-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -475,7 +535,8 @@ a { text-decoration: none; }
 <div class="sticky-nav">
   <div class="sticky-nav-inner">
     <span class="brand">Almaty</span>
-    <nav>
+    <button class="nav-hamburger" id="navHamburger" aria-label="選單">☰</button>
+    <nav id="stickyNavLinks">
       <a href="#flights">航班</a>
       <a href="#itinerary">行程表</a>
       <a href="#food">美食地圖</a>
@@ -994,6 +1055,7 @@ function renderFood() {
     });
   });
 
+  // Map panel footer
   const selObj = FOODS.find(f => f.q === selectedFood) || FOODS[0];
   document.getElementById('selFoodName').textContent = selObj.name;
   document.getElementById('selFoodNav').href = gmapUrl(selObj.name + ' Almaty');
@@ -1023,6 +1085,17 @@ function renderStay() {
 renderItinerary();
 renderFood();
 renderStay();
+
+// Hamburger menu toggle
+(function() {
+  const btn = document.getElementById('navHamburger');
+  const nav = document.getElementById('stickyNavLinks');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', () => nav.classList.toggle('nav-open'));
+  nav.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => nav.classList.remove('nav-open'))
+  );
+})();
 </script>
 </body>
 </html>
